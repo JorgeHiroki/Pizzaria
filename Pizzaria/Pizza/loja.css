@@ -1,0 +1,152 @@
+html{
+    width: 100%;
+    background-color: #f2f2f2;
+}
+body{
+    font: Trebuchet MS, sans-serif;
+    background-color: white;
+}
+
+.vazio {
+    min-height: 100%;
+    /* igual a altura do rodapé */
+    margin-bottom: -60px; 
+}
+.vazio:after {
+    content: "";
+    display: block;
+}
+.lancamentos{
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    font-family: fantasy;
+}
+.lancamentos h5{
+    color: #F2F2F2;
+    font-family: Verdana, sans-serif;
+    padding: 20px;
+}
+#lancamentos{
+    color: #F2F2F2;
+    background-color: #262626;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+#textocarrossel{
+    font-size: 1rem;
+}
+#textocarrossel p{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+iframe{
+    padding: 20px;
+    max-width: 100%;
+}
+
+#destaque{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+#imgsdestaque img{
+    max-width: 100%;
+    padding: 10px;
+}
+#prodPesquisa{
+    margin-left: 150px;
+}
+
+
+.checked {
+    color: orange;
+    margin-bottom: 20px;
+  }
+
+
+.carrinhoBtn {
+    background-color: white; /* Blue background */
+    color: black; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .carrinhoBtn:hover {
+    background-color: rgba(0, 0, 0, 0.055);
+  }
+#Autores{
+    
+    width: 100%;
+    background-color:#262626;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    margin : 20px auto;
+
+}
+#footer{
+    text-align: center;
+    margin : 20px auto;
+}
+#Autores{
+    text-align: center;
+    margin: 20px auto;
+    
+}
+footer img{
+    max-width: 70px;
+}
+
+
+#inferior{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: (1fr 1fr 1fr);
+}
+#inferior .card{
+    max-width: 100%;
+}
+#inferior h3{
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+#menuIcon{
+    display: none;
+}
+.menu-icon{
+    display: none;
+}
+
+
+@media screen and (max-width:800px){
+    footer img{
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:1000px){
+    #botaopesquisa{
+        display: none;
+    }
+}
+@media screen and (max-width:425px){
+    .form-inline{
+        width: 50%;
+    }
+}
+@media screen and (max-width:340px){
+    .form-inline{
+        display: none;
+    }
+    html{
+        font-size: 0.8rem;
+    }
+}
