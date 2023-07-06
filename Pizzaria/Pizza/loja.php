@@ -25,7 +25,7 @@ $hideen = 0;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta lang="PT-BR">
-    <title>Loja de Informática</title>
+    <title>Pizzaria Felipe Massas</title>
     <link rel="sortcut icon" href="Imagens/logo_loja.png" type="image/png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -43,10 +43,10 @@ $hideen = 0;
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#carrossel">Promocões</a>
+                    <a class="nav-link" href="#carrossel">Combos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#inferior">Produtos</a>
+                    <a class="nav-link" href="#inferior">Alimentos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#Autores">Autores</a>
@@ -55,7 +55,7 @@ $hideen = 0;
                     <a class="nav-link" href="carrinho.php">Carrinho</a>
                 </li>
                 <form action="" method="post">
-                    <button name=ofertas class="ofertas" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Até R$500,00</button>
+                    <button name=ofertas class="ofertas" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Somente as Pizzas</button>
                 </form>
             </ul>
         </div>
@@ -85,7 +85,7 @@ $hideen = 0;
             <div class="container" id="lancamentos">
                 <div class="row">
                     <div class="col-12">
-                        <h1>Promoções</h1>
+                        <h1>Combos</h1>
                         <br />
                     </div>
                     <div class="col-12">
@@ -100,12 +100,12 @@ $hideen = 0;
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <img src="Imagens/cadeira.jpg" height="260">
+                                                <img src="Imagens/comboCasal.jpg" height="260">
                                             </div>
-                                            <div class="col-xl-5 col-12" id="textocarrossel">
-                                                <h3>Cadeira Gamer</h3>
-                                                <p><b>Cadeira Gamer DT3sports Elise, Até 130Kg, Reclinável, Preto</b></p>
-                                                <p><b>Marca: </b>DT3sports | <b>Preço: </b>R$ 800.00</p>
+                                            <div class="col-xl-5 col-12 combo1" id="textocarrossel">
+                                                <h3>Combo Casal</h3>
+                                                <p><b>Combo com uma pizza Margherita, pizza de brigadeiro e Coca-Cola</b></p>
+                                                <b>Preço: </b>R$ 140.00</p>
                                             </div>
                                         </div>
                                     </div>
@@ -194,7 +194,6 @@ $hideen = 0;
                                             <h5 class="card-title"><?php echo $dados['Nome']; ?></h5>
 
                                             <p class="card-text"><?php echo $dados['Descricao']; ?></p>
-                                            <p class="card-text">Marca: <?php echo $dados['Marca']; ?></p>
                                             <p class="card-text">Tipo: <?php echo $dados['Tipo']; ?></p>
                                             <p class="card-text">R$<?php echo $dados['Preco']; ?></p>
 
@@ -245,7 +244,7 @@ $hideen = 0;
     } //pesquisa sendo feita
     else {
         $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-        $sql_pesquisa = "SELECT  * FROM PRODUTO WHERE Nome like '%$pesquisa%' or Descricao like '%$pesquisa%' or Tipo like '%$pesquisa%' or Marca like '%$pesquisa%'";
+        $sql_pesquisa = "SELECT  * FROM PRODUTO WHERE Nome like '%$pesquisa%' or Descricao like '%$pesquisa%' or Tipo like '%$pesquisa%'";
         //$sql_pesquisa = "SELECT ID,Imagem, Nome, Descricao, Marca, Tipo, Preco FROM PRODUTO Group by Tipo Having Nome like '%$pesquisa%' or Descricao like '%$pesquisa%' or Tipo like '%$pesquisa%' or Marca like '%$pesquisa%'";
         $sql_query_pesquisa = $mysqli->query($sql_pesquisa) or die("ERRO AO CONSULTAR" . $mysqli->error);
         if ($sql_query_pesquisa->num_rows == 0) {
@@ -273,7 +272,6 @@ $hideen = 0;
                                 <h5 class="card-title"><?php echo $dados['Nome']; ?></h5>
 
                                 <p class="card-text"><?php echo $dados['Descricao']; ?></p>
-                                <p class="card-text">Marca: <?php echo $dados['Marca']; ?></p>
                                 <p class="card-text">Tipo: <?php echo $dados['Tipo']; ?></p>
                                 <p class="card-text">R$<?php echo $dados['Preco']; ?></p>
                                 <form action="" method="post">
