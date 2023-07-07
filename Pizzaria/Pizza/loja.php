@@ -56,7 +56,7 @@ $hideen = 0;
                     <a class="nav-link" href="carrinho.php">Carrinho</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="carrinho.php">Monte sua Pizza</a>
+                    <a class="nav-link" href="#">Monte sua Pizza</a>
                 </li>
             </ul>
         </div>
