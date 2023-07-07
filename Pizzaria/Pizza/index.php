@@ -31,9 +31,8 @@
 				$sql_cria_venda = "INSERT INTO `venda` (`DataVenda`, `PrecoTotal`, `Endereco`, `CPFCliente`, `IDFormaPagamento`) VALUES (null,0, null, '".$usuario['CPF']."', '0') ";
 				$sql_gera_venda = $mysqli->query($sql_cria_venda) or die("ESSE ERRO: " . $mysqli->error);
 				
-				$sqlSalvaID = $mysqli->query("SELECT * FROM venda WHERE CPFCliente = ".$usuario['CPF']." AND ID = (SELECT MAX(ID) FROM venda WHERE CPFCliente = ".$usuario['CPF'].")") or die("Falha na execução do código SQL: " . $mysqli->error);
+				$sqlSalvaID = $mysqli->query("SELECT * FROM venda WHERE CPFCliente = \"".$usuario['CPF']." \"AND ID = (SELECT MAX(ID) FROM venda WHERE CPFCliente = \"".$usuario['CPF']."\")") or die("Falha na execução do código SQL: " . $mysqli->error);
 				$ID = $sqlSalvaID->fetch_assoc();
-				
 				//variavel session dura por um periodo de mais ou menos 1 semana
 				$_SESSION['idvenda'] = $ID['ID']; 
 				$_SESSION['nome'] = $usuario['Nome'];

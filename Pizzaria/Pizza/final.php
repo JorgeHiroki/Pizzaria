@@ -10,7 +10,7 @@ include('conexao.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta lang="PT-BR">
-    <title>Loja de Informática</title>
+    <title>Pizzaria Felipe Massas</title>
     <link rel="sortcut icon" href="Imagens/logo_loja.png" type="image/png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -41,7 +41,7 @@ include('conexao.php');
         <div class="row">
             <div class="col-lg-12 col-12" style="margin-top: 100px;margin-right:10000px">
                 <h1>Compra finalizada!</h1>
-                <h2>Sua entrega será realiza em até 365 dias uteis!</h2>
+                <h2>Sua entrega será realiza em até 1 hora!</h2>
                 <h5> <br> Dados da compra: <br><?php
                                         $sql_code = "SELECT c.Nome, v.DataVenda, v.PrecoTotal FROM Cliente c join venda v on c.CPF= v.CPFCliente WHERE v.ID=  ".$_SESSION['idvenda']."";
                                          $sql_query2 = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
