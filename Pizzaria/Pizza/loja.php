@@ -106,9 +106,6 @@ $hideen = 0;
                                                 <h3>Combo Casal</h3>
                                                 <p><b>Combo com uma pizza Margherita, pizza de brigadeiro e Coca-Cola</b></p>
                                                 <b>Preço: </b>R$ 60.00</p>
-                                                <form action="" method="post">
-                                                    <button name='12' class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -123,9 +120,6 @@ $hideen = 0;
                                                 <h3>Combo Família</h3>
                                                 <p><b>Combo com uma pizza de Calabresa, pizza de 4 queijos e Guaraná</b></p>
                                                 <b>Preço: </b>R$ 55.00</p>
-                                                <form action="" method="post">
-                                                    <button name='14' class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -140,15 +134,11 @@ $hideen = 0;
                                                 <h3>Combo da Tropa</h3>
                                                 <p><b>Combo com uma pizza Milho e Bacon, pizza à Moda e Portuguesa</b></p>
                                                 <b>Preço: </b>R$ 75.00</p>
-                                                <form action="" method="post">
-                                                    <button name='13' class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                            
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -211,10 +201,10 @@ $hideen = 0;
                                             </form>
                                             <?php
                                             if (isset($_POST[$dados['ID']])) {
+                                                
                                                 $sql_code_item = "SELECT * FROM item where IDProduto     =  " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                                $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
-                                                $qnt_item = $sql_query_item->num_rows;
-
+                                                $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+                                                $qnt_item = $sql_query_item->num_rows; 
                                                 if ($qnt_item < 1) {
                                                     //$sql_code_cart = $mysqli->prepare("INSERT INTO `item` (`Nome`, `Quantidade`, `PrecoItem`, `IDProduto`, `IDVenda`) VALUES ('ADFS',1,10,4,1)");
                                                     $sql_code_cart = $mysqli->prepare("INSERT INTO `item` (`Quantidade`, `PrecoItem`, `IDProduto`, `IDVenda`) VALUES (1," . $dados['Preco'] . "," . $dados['ID'] . "," . $_SESSION['idvenda'] . ")");
