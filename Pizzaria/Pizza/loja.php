@@ -105,7 +105,10 @@ $hideen = 0;
                                             <div class="col-xl-5 col-12 combo1" id="textocarrossel">
                                                 <h3>Combo Casal</h3>
                                                 <p><b>Combo com uma pizza Margherita, pizza de brigadeiro e Coca-Cola</b></p>
-                                                <b>Preço: </b>R$ 140.00</p>
+                                                <b>Preço: </b>R$ 60.00</p>
+                                                <form action="" method="post">
+                                                    <button name='12' class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -114,12 +117,15 @@ $hideen = 0;
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <img src="Imagens/PC.jpg" height="260">
+                                                <img src="Imagens/comboFamilia.jpg" height="260">
                                             </div>
-                                            <div class="col-xl-5 col-12" id="textocarrossel">
-                                                <h3>PC Gamer</h3>
-                                                <p><b>PC Gamer Acer Predator Orion PO5-620-BR12, Intel Core i5-11400, LED, NVIDIA GeForce RTX 3060, 16GB DDR4, SSD 512GB, Windows 11 Home, Preto </b></p>
-                                                <p><b>Marca: </b>Acer | <b>Preço: </b>R$ 5000.00</p>
+                                            <div class="col-xl-5 col-12 combo1" id="textocarrossel">
+                                                <h3>Combo Família</h3>
+                                                <p><b>Combo com uma pizza de Calabresa, pizza de 4 queijos e Guaraná</b></p>
+                                                <b>Preço: </b>R$ 55.00</p>
+                                                <form action="" method="post">
+                                                    <button name='14' class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -128,12 +134,15 @@ $hideen = 0;
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <img src="Imagens/processador.jpg" height="260">
+                                                <img src="Imagens/comboTropa.jpg" height="260">
                                             </div>
-                                            <div class="col-xl-5 col-12" id="textocarrossel">
-                                                <h3>Ryzen 5 5600</h3>
-                                                <p><b>Processador AMD Ryzen 5 5600, 3.5GHz (4.4GHz Max Turbo), Cache 35MB, AM4</b></p>
-                                                <p><b>Marca: </b>AMD | <b>Preço: </b>R$ 700.00</p>
+                                            <div class="col-xl-5 col-12 combo1" id="textocarrossel">
+                                                <h3>Combo da Tropa</h3>
+                                                <p><b>Combo com uma pizza Milho e Bacon, pizza à Moda e Portuguesa</b></p>
+                                                <b>Preço: </b>R$ 75.00</p>
+                                                <form action="" method="post">
+                                                    <button name='13' class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
