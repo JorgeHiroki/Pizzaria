@@ -2,15 +2,16 @@
 include('protect.php');
 include('conexao.php');
 
+
 $sql_code = "SELECT * FROM pizza";
-$sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+$sql_query = $mysqli->query($sql_code) or die("Eadsa! " . $mysqli->error);
 $qnt = $sql_query->num_rows;
 $hideen = 0;
 
     if (isset($_POST['ofertas'])) {
         $hideen = 1;
         $sql_code = "SELECT * FROM pizza GROUP BY Preco HAVING Preco < 500";
-        $sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+        $sql_query = $mysqli->query($sql_code) or die("Easdasas! " . $mysqli->error);
         $qnt = $sql_query->num_rows;
     } 
 
@@ -54,9 +55,9 @@ $hideen = 0;
                 <li class="nav-item">
                     <a class="nav-link" href="carrinho.php">Carrinho</a>
                 </li>
-                <form action="" method="post">
-                    <button name=ofertas class="ofertas" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Somente as Pizzas</button>
-                </form>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Monte sua Pizza</a>
+                </li>
             </ul>
         </div>
         <form action="">
@@ -162,13 +163,13 @@ $hideen = 0;
 
         <div class="container" id="inferior">
             <div class="row">
-                <div class="col-lg-10 col-12">
+                <div class="col-lg-12 col-12">
                     <h3>Produtos</h3>
                     
                     <?php
                     if ($qnt < 1) {
                     ?>
-                        <div class="card mb-3" style="max-width: 700px;">
+                        <div class="card mb-3" style="max-width: 100%;">
                             <div class="row no-gutters">
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -182,7 +183,7 @@ $hideen = 0;
                         while ($dados = $sql_query->fetch_assoc()) {
                         ?>
                         
-                            <div class="card mb-3" style="max-width: 700px;">
+                            <div class="card mb-3" style="max-width: 100%;">
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <br /><br />
@@ -279,7 +280,7 @@ $hideen = 0;
                                 <?php
                                 if (isset($_POST[$dados['ID']])) {
                                     $sql_code_item = "SELECT * FROM item where IDProduto =  " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                    $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+                                    $sql_query_item = $mysqli->query($sql_code_item) or die("asdasdas! " . $mysqli->error);
                                     $qnt_item = $sql_query_item->num_rows;
                                     if ($qnt_item < 1) {
                                         //$sql_code_cart = $mysqli->prepare("INSERT INTO `item` (`Nome`, `Quantidade`, `PrecoItem`, `IDProduto`, `IDVenda`) VALUES ('ADFS',1,10,4,1)");
@@ -293,7 +294,7 @@ $hideen = 0;
                                     } else {
 
                                         $sql_code_item_num = "SELECT * FROM item where IDProduto = " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                        $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+                                        $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("sadasdasdas! " . $mysqli->error);
                                         $qnt_item_num = $sql_query_item_num->fetch_assoc();
                                         $resul = $sql_query_item_num->fetch_assoc();
 

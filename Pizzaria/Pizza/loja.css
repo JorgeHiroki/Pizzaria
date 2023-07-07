@@ -1,6 +1,6 @@
 html{
     width: 100%;
-    background-color: #f2f2f2;
+    background-color: #f2f2f2
 }
 body{
     font: Trebuchet MS, sans-serif;
@@ -36,9 +36,11 @@ body{
 #textocarrossel{
     font-size: 1rem;
 }
+
 #textocarrossel p{
     font-family: Comic Sans MS, Comic Sans, cursive;
 }
+
 iframe{
     padding: 20px;
     max-width: 100%;
@@ -51,6 +53,7 @@ iframe{
     align-items: center;
     padding: 20px;
 }
+
 #imgsdestaque img{
     max-width: 100%;
     padding: 10px;
@@ -109,13 +112,16 @@ footer img{
 
 
 #inferior{
-    display: grid;
+    display: flex;
+    justify-content: center;
     grid-gap: 10px;
     grid-template-columns: (1fr 1fr 1fr);
 }
+
 #inferior .card{
     max-width: 100%;
 }
+
 #inferior h3{
     margin-bottom: 20px;
     margin-top: 30px;
@@ -124,9 +130,17 @@ footer img{
 #menuIcon{
     display: none;
 }
+
 .menu-icon{
     display: none;
 }
+
+.row {
+    display: flex;
+    justify-content: center;
+
+}
+
 
 
 @media screen and (max-width:800px){
