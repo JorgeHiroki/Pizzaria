@@ -2,15 +2,16 @@
 include('protect.php');
 include('conexao.php');
 
+
 $sql_code = "SELECT * FROM pizza";
-$sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+$sql_query = $mysqli->query($sql_code) or die("Eadsa! " . $mysqli->error);
 $qnt = $sql_query->num_rows;
 $hideen = 0;
 
     if (isset($_POST['ofertas'])) {
         $hideen = 1;
         $sql_code = "SELECT * FROM pizza GROUP BY Preco HAVING Preco < 500";
-        $sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+        $sql_query = $mysqli->query($sql_code) or die("Easdasas! " . $mysqli->error);
         $qnt = $sql_query->num_rows;
     } 
 
@@ -203,7 +204,7 @@ $hideen = 0;
                                             <?php
                                             if (isset($_POST[$dados['ID']])) {
                                                 $sql_code_item = "SELECT * FROM item where IDProduto     =  " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                                $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+                                                $sql_query_item = $mysqli->query($sql_code_item) or die(" asdasdasdas! " . $mysqli->error);
                                                 $qnt_item = $sql_query_item->num_rows;
 
                                                 if ($qnt_item < 1) {
@@ -280,7 +281,7 @@ $hideen = 0;
                                 <?php
                                 if (isset($_POST[$dados['ID']])) {
                                     $sql_code_item = "SELECT * FROM item where IDProduto =  " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                    $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+                                    $sql_query_item = $mysqli->query($sql_code_item) or die("asdasdas! " . $mysqli->error);
                                     $qnt_item = $sql_query_item->num_rows;
                                     if ($qnt_item < 1) {
                                         //$sql_code_cart = $mysqli->prepare("INSERT INTO `item` (`Nome`, `Quantidade`, `PrecoItem`, `IDProduto`, `IDVenda`) VALUES ('ADFS',1,10,4,1)");
@@ -294,7 +295,7 @@ $hideen = 0;
                                     } else {
 
                                         $sql_code_item_num = "SELECT * FROM item where IDProduto = " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                        $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
+                                        $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("sadasdasdas! " . $mysqli->error);
                                         $qnt_item_num = $sql_query_item_num->fetch_assoc();
                                         $resul = $sql_query_item_num->fetch_assoc();
 
