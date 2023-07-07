@@ -152,4 +152,21 @@ footer img{
     html{
         font-size: 0.8rem;
     }
+
+select {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    }
+    
+    /* Estilo para as caixas de seleção */
+    input[type="checkbox"] {
+    margin-right: 5px;
+    }
+    
+    /* Estilo para os botões de rádio */
+    input[type="radio"] {
+    margin-right: 5px;
+    } 
 }
