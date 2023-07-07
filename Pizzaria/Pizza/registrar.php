@@ -5,6 +5,7 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <?php
+$messagem_erro = "";
 include('conexao.php');
 if (isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['cpf']) || isset($_POST['nome']) || isset($_POST['endereco']) || isset($_POST['idade'])) {
 
@@ -31,8 +32,10 @@ if (isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['cpf']) || 
 
         $sql_code = $mysqli->prepare("INSERT INTO `cliente` (`CPF`, `Nome`, `Idade`, `Endereco`, `Email`, `Senha`) VALUES (?,?,?,?,?,?)");
         $sql_code->bind_param("ssisss", $cpf, $nome, $idade, $endereco, $email, $senha);
-        $sql_code->execute() or die("" . $mysqli->error); 
-        echo "Registro concluído";
+        $sql_code->execute();
+        echo $mysqli->error;
+
+        //echo "Registro concluído";
 
        //$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
     }
@@ -43,7 +46,7 @@ if (isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['cpf']) || 
 <html>
 
 <head>
-    <title>My Awesome Login Page</title>
+    <title>Registrar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -102,13 +105,12 @@ if (isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['cpf']) || 
                         </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="registrar" class="btn login_btn">Registrar</button>
-
                         </div>
                     </form>
-
                 </div>
                 <div class="mt-4">
 					<div class="d-flex justify-content-center links" >
+                     
 						<p class="signUp" ><a href="index.php" class="ml-2">Voltar para o login</a></p>
 					</div>
 				</div>

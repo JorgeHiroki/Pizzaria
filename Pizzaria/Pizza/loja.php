@@ -2,15 +2,15 @@
 include('protect.php');
 include('conexao.php');
 
-$sql_code = "SELECT * FROM produto";
-$sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+$sql_code = "SELECT * FROM pizza";
+$sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
 $qnt = $sql_query->num_rows;
 $hideen = 0;
 
     if (isset($_POST['ofertas'])) {
         $hideen = 1;
-        $sql_code = "SELECT * FROM produto GROUP BY Preco HAVING Preco < 500";
-        $sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+        $sql_code = "SELECT * FROM pizza GROUP BY Preco HAVING Preco < 500";
+        $sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
         $qnt = $sql_query->num_rows;
     } 
 
@@ -173,7 +173,7 @@ $hideen = 0;
                             <div class="row no-gutters">
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Não há produtos cadastrados</h5>
+                                        <h5 class="card-title">Não há pizzas cadastrados</h5>
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@ $hideen = 0;
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $dados['Nome']; ?></h5>
 
-                                            <p class="card-text"><?php echo $dados['Descricao']; ?></p>
+                                            <p class="card-text"><?php echo $dados['Ingredientes']; ?></p>
                                             <p class="card-text">Tipo: <?php echo $dados['Tipo']; ?></p>
                                             <p class="card-text">R$<?php echo $dados['Preco']; ?></p>
 
@@ -203,7 +203,7 @@ $hideen = 0;
                                             <?php
                                             if (isset($_POST[$dados['ID']])) {
                                                 $sql_code_item = "SELECT * FROM item where IDProduto     =  " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                                $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+                                                $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
                                                 $qnt_item = $sql_query_item->num_rows;
 
                                                 if ($qnt_item < 1) {
@@ -216,12 +216,12 @@ $hideen = 0;
                                                 } else {
 
                                                     $sql_code_item_num = "SELECT * FROM item where IDProduto = " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                                    $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+                                                    $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("Erro ao consultar catálogo de pizza! " . $mysqli->error);
                                                     $qnt_item_num = $sql_query_item_num->fetch_assoc();
                                                     $resul = $sql_query_item_num->fetch_assoc();
 
                                                     $sql_code_cart = $mysqli->prepare("UPDATE `item`  SET Quantidade = " . $qnt_item_num['Quantidade'] . "+1, PrecoItem = (" . $qnt_item_num['Quantidade'] . "+1) * " . $dados['Preco'] . " where IDProduto = " . $dados['ID'] . " AND IDVenda = " . $_SESSION['idvenda'] . "");
-                                                    echo "Mais um produto adicionado!";
+                                                    echo "Mais uma pizza adicionado!";
 
                                                     //header("Location: loja.php");
                                                     $sql_code_cart->execute();
@@ -244,7 +244,7 @@ $hideen = 0;
     } //pesquisa sendo feita
     else {
         $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-        $sql_pesquisa = "SELECT  * FROM PRODUTO WHERE Nome like '%$pesquisa%' or Descricao like '%$pesquisa%' or Tipo like '%$pesquisa%'";
+        $sql_pesquisa = "SELECT  * FROM PIZZA WHERE Nome like '%$pesquisa%' or Ingredientes like '%$pesquisa%' or Tipo like '%$pesquisa%'";
         //$sql_pesquisa = "SELECT ID,Imagem, Nome, Descricao, Marca, Tipo, Preco FROM PRODUTO Group by Tipo Having Nome like '%$pesquisa%' or Descricao like '%$pesquisa%' or Tipo like '%$pesquisa%' or Marca like '%$pesquisa%'";
         $sql_query_pesquisa = $mysqli->query($sql_pesquisa) or die("ERRO AO CONSULTAR" . $mysqli->error);
         if ($sql_query_pesquisa->num_rows == 0) {
@@ -271,7 +271,7 @@ $hideen = 0;
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $dados['Nome']; ?></h5>
 
-                                <p class="card-text"><?php echo $dados['Descricao']; ?></p>
+                                <p class="card-text"><?php echo $dados['Ingredientes']; ?></p>
                                 <p class="card-text">Tipo: <?php echo $dados['Tipo']; ?></p>
                                 <p class="card-text">R$<?php echo $dados['Preco']; ?></p>
                                 <form action="" method="post">
@@ -280,7 +280,7 @@ $hideen = 0;
                                 <?php
                                 if (isset($_POST[$dados['ID']])) {
                                     $sql_code_item = "SELECT * FROM item where IDProduto =  " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                    $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+                                    $sql_query_item = $mysqli->query($sql_code_item) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
                                     $qnt_item = $sql_query_item->num_rows;
                                     if ($qnt_item < 1) {
                                         //$sql_code_cart = $mysqli->prepare("INSERT INTO `item` (`Nome`, `Quantidade`, `PrecoItem`, `IDProduto`, `IDVenda`) VALUES ('ADFS',1,10,4,1)");
@@ -294,12 +294,12 @@ $hideen = 0;
                                     } else {
 
                                         $sql_code_item_num = "SELECT * FROM item where IDProduto = " . $dados['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
-                                        $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("Erro ao consultar catálogo de produtos! " . $mysqli->error);
+                                        $sql_query_item_num = $mysqli->query($sql_code_item_num) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
                                         $qnt_item_num = $sql_query_item_num->fetch_assoc();
                                         $resul = $sql_query_item_num->fetch_assoc();
 
                                         $sql_code_cart = $mysqli->prepare("UPDATE `item`  SET Quantidade = " . $qnt_item_num['Quantidade'] . "+1, PrecoItem = (" . $qnt_item_num['Quantidade'] . "+1) * " . $dados['Preco'] . " WHERE IDProduto = " . $dados['ID'] . " AND IDVenda = " . $_SESSION['idvenda'] . "");
-                                        echo "Mais um produto adicionado!";
+                                        echo "Mais um pizzas adicionado!";
 
                                         //header("Location: loja.php");
                                         $sql_code_cart->execute();
@@ -319,7 +319,7 @@ $hideen = 0;
     }
     ?>
     <footer id="Autores">
-        <p class="footer">Copyright © 2022 - Banco de Dados - Jorge Hiroki - Rafael Lima - Gabriela Guerra - Gabriel de Medeiros</p>
+        <p class="footer">Copyright © 2023 - Engenharia de Software - Celso França - Jorge Hiroki - Gabriel de Medeiros - André Macedo</p>
         <img src="Imagens/logo_loja.png">
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
