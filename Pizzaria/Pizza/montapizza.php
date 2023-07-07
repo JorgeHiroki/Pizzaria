@@ -3,7 +3,6 @@ include('protect.php');
 include('conexao.php');
 
 
-
 $sql_code = "SELECT * FROM pizza";
 $sql_query = $mysqli->query($sql_code) or die("Erro ao consultar catálogo de pizzas! " . $mysqli->error);
 $qnt = $sql_query->num_rows;
@@ -21,21 +20,28 @@ $hideen = 0;
             $ing1 = $_POST['ingredientes1'];
             $ing2 = $_POST['ingredientes2'];
             $ing3 = $_POST['ingredientes3'];
-            $sql_monta_pizza = $mysqli->prepare("INSERT INTO `pizza` (`Nome`, `Ingredientes`, `Imagem`, `Tipo`, `Tamanho`, `Preco`) VALUES ('Pizza Montada', 'Massa, Molho, Mussarela, " . $ing1 . ", " . $ing2 . "', 'pizzaMontada.jpg', 'Montada', '" . $ing3 . "', 50))");    
-            echo ("INSERT INTO `pizza` (`Nome`, `Ingredientes`, `Imagem`, `Tipo`, `Tamanho`, `Preco`) VALUES ('Pizza Montada', 'Massa, Molho, Mussarela, " . $ing1 . ", " . $ing2 . "', 'pizzaMontada.jpg', 'Montada', '" . $ing3 . "', 50)");
+            $sql_select_pizza = "SELECT * from pizza where ID = (SELECT MAX(ID) FROM pizza)";
+            $pizza_selecinada = $mysqli->query($sql_select_pizza)->fetch_assoc() or die("Nao foi possivel montar sua pizza! " . $mysqli->error);
+            $id_novo = $pizza_selecinada['ID'] + 1;
+            $sql_monta_pizza = $mysqli->prepare("INSERT INTO `pizza` (`ID`, `Nome`, `Ingredientes`, `Imagem`, `Tipo`, `Tamanho`, `Preco`) VALUES (" . $id_novo . " ,'Pizza Montada " . $id_novo . "', 'Massa, Molho, Mussarela, " . $ing1 . ", " . $ing2 . "', 'pizzaMontada.jpg', 'Montada', '" . $ing3 . "', 50)");    
+
             $sql_monta_pizza->execute();
             $sql_select_pizza = "SELECT * from pizza where ID = (SELECT MAX(ID) FROM pizza)";
             $pizza_selecinada = $mysqli->query($sql_select_pizza)->fetch_assoc() or die("Nao foi possivel montar sua pizza! " . $mysqli->error);
-            
+            //echo($pizza_selecinada['ID']);
             switch ($ing3) {
                 case 'P':
                     $preco = 30;
+                    break;
                 case 'M':
                     $preco = 40;
+                    break;
                 case 'G':
                     $preco = 50;
+                    break;
                 default:
-                    $preco = 0;
+                    $preco = 100;
+                    break;
             }
             // echo("SELECT * FROM item where IDProduto     =  " . $pizza_selecinada['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "");
             $sql_code_item = "SELECT * FROM item where IDProduto     =  " . $pizza_selecinada['ID'] . " and IDVenda = " . $_SESSION['idvenda'] . "";
@@ -106,9 +112,6 @@ $hideen = 0;
                 <li class="nav-item">
                     <a class="nav-link" href="carrinho.php">Carrinho</a>
                 </li>
-                <form action="" method="post">
-                    <button name=ofertas class="ofertas" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Somente as Pizzas</button>
-                </form>
             </ul>
         </div>
         <form action="">
@@ -150,14 +153,11 @@ $hideen = 0;
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <br /><br />
-                                        <img src="Imagens/" class="card-img" alt="...">
+                                        <img src="Imagens/pizzaMontada.jpg" class="card-img" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h5 class="card-title"></h5>
-                                            <p class="card-text"></p>
-                                            <p class="card-text">Tipo: </p>
-                                            <p class="card-text">R$</p>
                                             <div id="opcoes">
                                                 <div class="selecao">
                                                     <form method="POST">
@@ -204,9 +204,6 @@ $hideen = 0;
                                                         <input type="submit" name="submeter"></input>
                                                     </form>
                                                 </div>
-                                            <form action="" method="post">
-                                                <button name=montada class="carrinhoBtn" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Adicionar ao carrinho</button>
-                                            </form>
                                             <!-- <?php
                                             if (isset($_POST[$dados['ID']])) {
                                                 

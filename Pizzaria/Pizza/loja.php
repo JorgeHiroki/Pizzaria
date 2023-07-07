@@ -9,6 +9,7 @@ $qnt = $sql_query->num_rows;
 $hideen = 0;
 
     if (isset($_POST['ofertas'])) {
+        header("Location: montapizza.php");
         $hideen = 1;
         $sql_code = "SELECT * FROM pizza GROUP BY Preco HAVING Preco < 500";
         $sql_query = $mysqli->query($sql_code) or die("Easdasas! " . $mysqli->error);
@@ -56,7 +57,7 @@ $hideen = 0;
                     <a class="nav-link" href="carrinho.php">Carrinho</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Monte sua Pizza</a>
+                    <a class="nav-link" href="montapizza.php">Monte sua Pizza</a>
                 </li>
             </ul>
         </div>
