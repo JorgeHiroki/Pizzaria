@@ -55,9 +55,9 @@ $hideen = 0;
                 <li class="nav-item">
                     <a class="nav-link" href="carrinho.php">Carrinho</a>
                 </li>
-                <form action="" method="post">
-                    <button name=ofertas class="ofertas" type="submit"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Somente as Pizzas</button>
-                </form>
+                <li class="nav-item">
+                    <a class="nav-link" href="carrinho.php">Monte sua Pizza</a>
+                </li>
             </ul>
         </div>
         <form action="">
@@ -163,13 +163,13 @@ $hideen = 0;
 
         <div class="container" id="inferior">
             <div class="row">
-                <div class="col-lg-10 col-12">
+                <div class="col-lg-12 col-12">
                     <h3>Produtos</h3>
                     
                     <?php
                     if ($qnt < 1) {
                     ?>
-                        <div class="card mb-3" style="max-width: 700px;">
+                        <div class="card mb-3" style="max-width: 100%;">
                             <div class="row no-gutters">
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -183,7 +183,7 @@ $hideen = 0;
                         while ($dados = $sql_query->fetch_assoc()) {
                         ?>
                         
-                            <div class="card mb-3" style="max-width: 700px;">
+                            <div class="card mb-3" style="max-width: 100%;">
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <br /><br />
